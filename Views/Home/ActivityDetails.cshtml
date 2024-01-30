@@ -1,0 +1,29 @@
+@model Actividad
+@using Microsoft.AspNetCore.Http
+
+<div style="display: flex; justify-content: space-between;">
+    <h2>Dojo Activity Center</h2>
+    <div class="navbar form-inline">
+        <div>
+            <a asp-controller="Home" asp-action="Dashboard" class="btn btn-primary">Dashboard</a>
+            <a asp-controller="Home" asp-action="Logout" class="btn btn-warning">Logout</a>
+        </div>
+    </div>
+</div>
+
+<div class="container bg-secondary text-light p-3">
+    <h3 class="text-warning">@Model.ActivityName</h3>
+    <h5>Event Coordinator: <span class="text-success">@Model.User.Name</span></h5>
+    <div>
+        <p>Description: <span class="text-success">@Model.Description</span></p>
+    </div>
+
+    <div class="bg-light text-dark p-2">
+    <label>Participants:</label>
+        @foreach (var p in Model.ActiveUser)
+        {
+            <p>@p.User.Name</p>
+        }
+    </div>
+
+</div>
